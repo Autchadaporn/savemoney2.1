@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:savemoney2/pages/homepage.dart';
 import 'register.dart';
-import 'package:firebase_database/firebase_database.dart';
-import 'dart:async';
-
+// import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+// import 'dart:async';
 
 
 // ignore: camel_case_types
@@ -16,8 +16,10 @@ class logIn extends StatefulWidget {
 
 // ignore: camel_case_types
 class _logInState extends State<logIn> {
-  String username, password ;
-  final databaseReference = FirebaseDatabase.instance.reference();
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,16 +79,7 @@ class _logInState extends State<logIn> {
   RaisedButton get login {
     return RaisedButton(
       onPressed: () => {
-        // print('user = $email pass = $password');
-            if (username == null ||
-                username.isEmpty ||
-                password == null ||
-                password.isEmpty) {
-              // print('กรุณากรอกข้อมูล');
-              // normalDialog(context, 'กรุณากรอกข้อมูล'),
-            } else {
-              loginserve(),
-            }
+        signIn(),
       },
       color: Colors.green,
       // padding: const EdgeInsets.only(left: 10),
@@ -97,34 +90,15 @@ class _logInState extends State<logIn> {
     );
   }
 
-  Future<Null> loginserve() async {
-    var data = databaseReference.child("user");
-    await data.child(username).once().then((DataSnapshot snapshot) {
-      print('Data ======>${snapshot.value}');
-      print(data);
-      if ('${snapshot.value}' == 'null') {
-        // print('user');
-        // normalDialog(context, 'username ของท่านผิด');
-      } else if (password == '${snapshot.value['password']}') {
-        MaterialPageRoute route = MaterialPageRoute(
-          builder: (context) => homepage(),
-        );
-        Navigator.pushAndRemoveUntil(context, route, (route) => false);
-      } else {
-        // print('รหัสไม่ถูก');
-        // normalDialog(context,'รหัสไม่ถูกต้อง กรุณากรอกใหม่');
-      }
-    });
-  }
 
   Widget usernameForm() {
     return Container(
       width: 250.0,
       height: 50.0,
       child: TextField(
-        onChanged: (value) => username = value.trim(),
+        controller: emailController,
         decoration: InputDecoration(
-          labelText: "Username",
+          labelText: "Email",
           labelStyle:
               // TextStyle(fontSize: 14, color: Colors.grey.shade400),
               TextStyle(fontSize: 14, color: Colors.black),
@@ -150,7 +124,7 @@ class _logInState extends State<logIn> {
       width: 250.0,
       height: 50.0,
       child: TextField(
-        onChanged: (value) => password = value.trim(),
+        controller: passwordController,
         decoration: InputDecoration(
           labelText: "Password",
           labelStyle:
@@ -174,7 +148,7 @@ class _logInState extends State<logIn> {
   }
 
   
-}
+
 
 mySizebox() => SizedBox(
       width: 8.0,
@@ -195,4 +169,31 @@ Text nameApp() => Text(
       
     );
 
-Future<void> checksighin() async {}
+signIn() {
+    _auth
+        .signInWithEmailAndPassword(
+            email: emailController.text.trim(),
+            password: passwordController.text.trim())
+        .then((user) {
+          Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => homepage()));
+      
+     // checkAuth(context); // add here
+    }).catchError((error) {
+      print(error.message);
+      scaffoldKey.currentState.showSnackBar(SnackBar(
+        content: Text(error.message, style: TextStyle(color: Colors.white)),
+        backgroundColor: Colors.red,
+      ));
+    });
+  }
+
+  // Future checkAuth(BuildContext context) async {
+  //   FirebaseUser user = await _auth.currentUser();
+  //   if (user != null) {
+  //     print("Already singed-in with");
+  //     Navigator.pushReplacement(
+  //         context, MaterialPageRoute(builder: (context) => MainPage()));
+  //   }
+  // }
+ }

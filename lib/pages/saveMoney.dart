@@ -2,6 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import "package:flutter/material.dart";
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:savemoney2/pages/statement.dart';
+import 'package:flutter/services.dart';
+
 class saveMoney extends StatefulWidget {
   @override
   _saveMoneyState createState() => _saveMoneyState();
@@ -66,12 +68,10 @@ class _saveMoneyState extends State<saveMoney> {
       child: TextField(
         onChanged: (value) => money = value.trim(),
         controller: addMoneyController,
-        decoration: InputDecoration(
-          labelText: "เพิ่มจำนวนเงิน",
-          labelStyle:
-              // TextStyle(fontSize: 14, color: Colors.grey.shade400),
-              TextStyle(fontSize: 14, color: Colors.black),
-          enabledBorder: OutlineInputBorder(
+        decoration: new InputDecoration(labelText: "เพิ่มจำนวนเงิน",
+        labelStyle:
+        TextStyle(fontSize: 14, color: Colors.black),
+        enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
             borderSide: BorderSide(
               // color: Colors.grey.shade300,
@@ -82,8 +82,31 @@ class _saveMoneyState extends State<saveMoney> {
               borderRadius: BorderRadius.circular(10),
               borderSide: BorderSide(
                 color: Colors.black,
-              )),
-        ),
+              ) )),
+            keyboardType: TextInputType.number,
+            textAlign: TextAlign.center,
+            
+            inputFormatters: <TextInputFormatter>[
+    WhitelistingTextInputFormatter.digitsOnly,
+],
+        // decoration: InputDecoration(
+        //   labelText: "เพิ่มจำนวนเงิน",
+        //   labelStyle:
+        //       // TextStyle(fontSize: 14, color: Colors.grey.shade400),
+        //       TextStyle(fontSize: 14, color: Colors.black),
+        //   enabledBorder: OutlineInputBorder(
+        //     borderRadius: BorderRadius.circular(10),
+        //     borderSide: BorderSide(
+        //       // color: Colors.grey.shade300,
+        //       color: Colors.black,
+        //     ),
+        //   ),
+        //   focusedBorder: OutlineInputBorder(
+        //       borderRadius: BorderRadius.circular(10),
+        //       borderSide: BorderSide(
+        //         color: Colors.black,
+        //       )),
+        // ),
       ),
     );
   }
@@ -91,12 +114,13 @@ class _saveMoneyState extends State<saveMoney> {
   void addmoney() {
     String savemoney = addMoneyController.text.trim() ;
     var firebaseUser =  FirebaseAuth.instance.currentUser;
-      firestoreInstance.collection("เงินออม").add(
+      firestoreInstance.collection(firebaseUser.uid).add(
       {"ยอดเงิน":savemoney}
     ).then((value) {
       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
                         return statement();
+
                       }));
       print("success");
     });
