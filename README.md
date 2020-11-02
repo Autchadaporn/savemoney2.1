@@ -39,17 +39,9 @@
 ![Screenshot-Statement](https://user-images.githubusercontent.com/55909533/97869255-bc0e4c00-1d43-11eb-9c85-beb6c30fa7db.jpg)
 
   
- ### หน้าเมนูอื่นๆ
+ ### หน้ายอดเงินรวม
   
- ![menu3](https://user-images.githubusercontent.com/55387327/97830930-2ce04480-1d01-11eb-9032-6d9e60cda0ac.PNG)
- - หน้าเมนูอื่นๆ
-   - หน้านี้จะแสดงเมนูอื่นๆ เช่น เค้ก ขนม เป็นต้น
-   - เมื่อผู้ใช้ต้องการดูรายละเอียดข้อมูลกดที่รูป จะแสดงรายละเอียดข้อมูลกาแฟดังรูป หน้าแสดงข้อมูล
-   - ผู้ใช้ต้องการไปหน้าเมนูต่อไป ก็เลือกตรงแถบข้างบนได้
+ ![Screenshot-Total](https://user-images.githubusercontent.com/55909533/97870108-0d6b0b00-1d45-11eb-9e65-ee33c59c51e3.jpg)
+ - ยอดเงินรวมทั้งหมดที่เพิ่ม
 
-### หน้าแสดงข้อมูล
 
-![popup](https://user-images.githubusercontent.com/55387327/97831090-a11ae800-1d01-11eb-9002-793a443dc7ec.PNG)
-  
-- หน้าแสดงข้อมูล
-  - หน้านี้จะแสดงรายละเอียดข้อมูลกาแฟ
