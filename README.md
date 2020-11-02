@@ -17,11 +17,11 @@
 ### หน้า Register
 
 ![Screenshot-Register](https://user-images.githubusercontent.com/55909533/97854115-9bd29300-1d2b-11eb-9f07-2eecc1b0481b.jpg)
-- หน้าสมัครสมาชิก ได้ใช้ Firebase Realtime Database และเชื่อมกับ Clound Firestore เพื่อเข้าสู่ระบบใช้งาน 
-  - ผู้ใช้กรอก E-mail Username Password Confrimpassword หลังจากนั้นกดปุ่ม Register พลิเคชันจะกลับไปยังหน้า Login เพื่อกรอกฟอร์มเข้าสู่ระเบบ
+- หน้าสมัครสมาชิก ได้ใช้ Firebase Realtime Database และเชื่อมกับ Firebase Authentication เพื่อเข้าสู่ระบบใช้งาน 
+  - ผู้ใช้กรอก E-mail, Username, Password, Confrimpassword หลังจากนั้นกดปุ่ม Register พลิเคชันจะกลับไปยังหน้า Login เพื่อกรอกฟอร์มเข้าสู่ระเบบ
   
 ### Firebase Realtime Database ใช้กับหน้าเข้าสู่ระบบและหน้าสมัครสมาชิก 
-![123140189_822964605201471_6574332387678052031_n](https://user-images.githubusercontent.com/55387327/97831576-06bba400-1d03-11eb-9ec3-3642355f0306.png)
+![Screenshot-Au](https://user-images.githubusercontent.com/55909533/97855266-16e87900-1d2d-11eb-91aa-64cec2d68649.jpg)
 
 ### หน้าบัญชีผู้ใช้
 
