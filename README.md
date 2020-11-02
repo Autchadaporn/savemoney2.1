@@ -1,4 +1,4 @@
-# MyAppCoffee
+# Save Money
 
 พัฒนาแอปพลิเคชันด้วย Flutter
 
@@ -7,18 +7,18 @@
 
 ## รายละเอียดระบบ
 
-### หน้าเข้าสู่ระบบ
+### หน้า Login
 
 ![Screenshot-Login](https://user-images.githubusercontent.com/55909533/97852445-544b0780-1d29-11eb-898c-46fbf0eed7a7.jpg)
 - หน้า login ได้ใช้ Firebase Realtime Database เพื่อเข้าสู่ระบบใช้งาน 
   - ผู้ใช้มีบัญชีแล้วสามารถกรอก E-mail และ Password เพื่อเข้าสู่ระบบใช้งาน
   - ผู้ใช้ที่ยังไม่บัญชี สามารถกดที่ปุ่ม "Register" 
 
-### หน้าสมัครสมาชิก
+### หน้า Register
 
-![regis](https://user-images.githubusercontent.com/55387327/97828790-b0e2fe00-1cfa-11eb-9b8a-0cd62e73842a.PNG)
-- หน้าสมัครสมาชิก ได้ใช้ Firebase Realtime Database เพื่อเข้าสู่ระบบใช้งาน 
-  - ผู้ใช้ต้องกรอกชื่อ ชื่อผู้ใช้ และรหัสผ่าน อย่างน้อย 6 ตัว เมื่อสมัครแล้วก็กดที่ปุ่ม "สมัครสมาชิก"
+![Screenshot-Register](https://user-images.githubusercontent.com/55909533/97854115-9bd29300-1d2b-11eb-9f07-2eecc1b0481b.jpg)
+- หน้าสมัครสมาชิก ได้ใช้ Firebase Realtime Database และเชื่อมกับ Clound Firestore เพื่อเข้าสู่ระบบใช้งาน 
+  - ผู้ใช้กรอก E-mail Username Password Confrimpassword หลังจากนั้นกดปุ่ม Register พลิเคชันจะกลับไปยังหน้า Login เพื่อกรอกฟอร์มเข้าสู่ระเบบ
   
 ### Firebase Realtime Database ใช้กับหน้าเข้าสู่ระบบและหน้าสมัครสมาชิก 
 ![123140189_822964605201471_6574332387678052031_n](https://user-images.githubusercontent.com/55387327/97831576-06bba400-1d03-11eb-9ec3-3642355f0306.png)
