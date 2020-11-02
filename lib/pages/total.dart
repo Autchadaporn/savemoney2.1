@@ -15,23 +15,7 @@ class total extends StatefulWidget {
 class _totalState extends State<total> {
   final firestoreInstance = FirebaseFirestore.instance;
   var firebaseUser = FirebaseAuth.instance.currentUser;
-  PageController _pageController = PageController();
-  List<Widget> _screen = [
-    saveMoney(),
-    statement(),
-    total(),
-  ];
-  int _selectedIndex = 0;
-  void _onPageChanged(int index) {
-    setState(() {
-      _selectedIndex = index;
-    }); //ทำให้ icon ข้างล่างเปลี่ยนสีตาม
-  }
-
-  void _onItemTapped(int selectedIndex) {
-    _pageController.jumpToPage(selectedIndex);
-  }
-
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,8 +42,7 @@ class _totalState extends State<total> {
         ),
         body: Container(
             child: StreamBuilder(
-                stream:
-                    firestoreInstance.collection(firebaseUser.uid).snapshots(),
+                stream: firestoreInstance.collection(firebaseUser.uid).snapshots(),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return CircularProgressIndicator();

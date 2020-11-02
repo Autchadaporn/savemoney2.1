@@ -26,7 +26,7 @@ class _statementState extends State<statement>  {
         ),
         backgroundColor: Color(0Xff264e70),
       ),
-      body: StreamBuilder (
+      body: StreamBuilder  (
         stream: firestoreInstance.collection(firebaseUser.uid).snapshots(),
         builder: (context, snapshot) {
           return ListView.builder(

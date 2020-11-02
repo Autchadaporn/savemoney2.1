@@ -58,7 +58,7 @@ class _saveMoneyState extends State<saveMoney> {
 
   RaisedButton get add {
     return RaisedButton(
-      onPressed: () => {cond(), addmoney()},
+      onPressed: () => {addmoney()},
       color: Colors.green,
       // padding: const EdgeInsets.only(left: 10),
       child: Text(
@@ -141,7 +141,9 @@ class _saveMoneyState extends State<saveMoney> {
     firestoreInstance
         .collection(firebaseUser.uid)
         .add({"ยอดเงิน": savemoney, "when": datte}).then((value) {
+      cond();
       print("success");
     });
+    //cond();
   }
 }
